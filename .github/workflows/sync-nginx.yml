@@ -5,9 +5,9 @@ on:
 #  schedule:
 #    # every day at 7am & 7pm pacific
 #    - cron: "0 2,14 * * *"
-  push:
-    branches:
-      - main
+#  push:
+#    branches:
+#      - main
 
 jobs:
   sync-images:
