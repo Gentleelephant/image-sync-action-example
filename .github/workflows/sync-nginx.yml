@@ -1,10 +1,13 @@
-name: Sync nginx images
+name: Sync images
 
 on:
   workflow_dispatch:
   schedule:
     # every day at 7am & 7pm pacific
     - cron: "0 2,14 * * *"
+  push:
+    branches:
+      - main
 
 jobs:
   sync-images:
@@ -15,8 +18,11 @@ jobs:
       - uses: hhyasdf/image-sync-action@v1.1
         with:
           auth_file: ./auth.yaml
-          images_file: ./nginx-images.yaml
+          images_file: ./images.yaml
           version: latest
           proc: 20
         env:
-          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          CCR_USERNAME: ${{ secrets.CCR_USERNAME }}
+          CCR_PASSWORD: ${{ secrets.CCR_PASSWORD }}

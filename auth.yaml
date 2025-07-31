@@ -1,3 +1,6 @@
-registry.cn-hangzhou.aliyuncs.com/hhyasdf:
-  password: ${ACR_PASSWORD}
-  username: hhyatcn
+docker.io:
+  username: ${DOCKER_USERNAME}
+  password: ${DOCKER_PASSWORD}
+ccr.ccs.tencentyun.com:
+  username: ${CCR_USERNAME}
+  password: ${CCR_PASSWORD}
