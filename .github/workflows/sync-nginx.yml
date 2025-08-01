@@ -15,20 +15,28 @@ jobs:
       - name: Save issue body to tmp file
         run: |
           mkdir -p "$RUNNER_TEMP"
-          file="/tmp/issue_body_$(date +%s).yaml"
+          file="/tmp/issue_body.yaml"
           echo "${{ github.event.issue.body }}" > "$file"
           echo "Saved issue body to: $file"
           echo "---- BEGIN CONTENT ----"
           cat "$file"
           echo "---- END CONTENT ----"
-#      - uses: hhyasdf/image-sync-action@v1.1
-#        with:
-#          auth_file: ./auth.yaml
-#          images_file: ./images.yaml
-#          version: latest
-#          proc: 20
-#        env:
-#          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-#          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-#          CCR_USERNAME: ${{ secrets.CCR_USERNAME }}
-#          CCR_PASSWORD: ${{ secrets.CCR_PASSWORD }}
+      - name: sync images
+        uses: hhyasdf/image-sync-action@v1.1
+        with:
+          auth_file: ./auth.yaml
+          images_file: /tmp/issue_body.yaml
+          version: latest
+          proc: 20
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          CCR_USERNAME: ${{ secrets.CCR_USERNAME }}
+          CCR_PASSWORD: ${{ secrets.CCR_PASSWORD }}
+      - name: Close issue
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'close-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          close-reason: completed
