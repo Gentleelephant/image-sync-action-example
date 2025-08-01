@@ -7,3 +7,7 @@ ccr.ccs.tencentyun.com:
 registry.cn-hangzhou.aliyuncs.com:
   username: ${ALI_USERNAME}
   password: ${ALI_PASSWORD}
+103.61.37.30:30002:
+  username: ${{ secrets.HARBOR_USERNAME }}
+  password: ${{ secrets.HARBOR_PASSWORD }}
+  insecure: true

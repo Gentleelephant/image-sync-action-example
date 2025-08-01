@@ -34,6 +34,8 @@ jobs:
           CCR_PASSWORD: ${{ secrets.CCR_PASSWORD }}
           ALI_USERNAME: ${{ secrets.ALI_USERNAME }}
           ALI_PASSWORD: ${{ secrets.ALI_PASSWORD }}
+          HARBOR_USERNAME: ${{ secrets.HARBOR_USERNAME }}
+          HARBOR_PASSWORD: ${{ secrets.HARBOR_PASSWORD }}
       - name: Close issue
         uses: actions-cool/issues-helper@v3
         with:
