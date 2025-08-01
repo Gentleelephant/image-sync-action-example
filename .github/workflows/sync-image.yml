@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Print context for debugging
-        run: echo "${{ toJSON(github.event.issue) }}"
       - name: Save issue body to tmp file
         run: |
           mkdir -p "$RUNNER_TEMP"
@@ -28,6 +26,7 @@ jobs:
           images_file: /tmp/issue_body.yaml
           version: latest
           proc: 20
+          retries: '2'
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
