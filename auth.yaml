@@ -8,6 +8,6 @@ registry.cn-hangzhou.aliyuncs.com:
   username: ${ALI_USERNAME}
   password: ${ALI_PASSWORD}
 103.61.37.30:30002:
-  username: ${{ HARBOR_USERNAME }}
-  password: ${{ HARBOR_PASSWORD }}
+  username: ${ HARBOR_USERNAME }
+  password: ${ HARBOR_PASSWORD }
   insecure: true
