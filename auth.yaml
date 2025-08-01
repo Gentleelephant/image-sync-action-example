@@ -4,3 +4,6 @@ docker.io:
 ccr.ccs.tencentyun.com:
   username: ${CCR_USERNAME}
   password: ${CCR_PASSWORD}
+registry.cn-hangzhou.aliyuncs.com:
+  username: ${ALI_USERNAME}
+  password: ${ALI_PASSWORD}
